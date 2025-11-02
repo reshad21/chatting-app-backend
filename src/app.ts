@@ -7,11 +7,17 @@ const app = express();
 
 // Middleware
 app.use(cookieParser());
-app.use(cors());
 app.use(express.json());
 
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
 // Routes
-app.use("/api/user", UserRoutes); // ← register user routes
+app.use("/api/user", UserRoutes);
 
 // Test route
 app.get("/", (req, res) => {

@@ -20,23 +20,11 @@ const userSchema = new Schema<IUser>(
       required: [true, "Password is required"],
       minlength: [6, "Password must be at least 6 characters long"],
     },
-    confirmPassword: {
-      type: String,
-      required: [true, "Please confirm your password"],
-      minlength: [6, "Confirm password must be at least 6 characters long"],
-    },
   },
   { timestamps: true }
 );
 
-// Optional: remove confirmPassword before saving to DB
-userSchema.pre("save", function (next) {
-  if (this.password !== this.confirmPassword) {
-    return next(new Error("Passwords do not match"));
-  }
-  (this as any).confirmPassword = undefined; // don’t save confirmPassword field
-  next();
-});
+
 
 const User = mongoose.model<IUser>("User", userSchema);
 

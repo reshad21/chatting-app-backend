@@ -23,4 +23,22 @@ const signUpUser = async (req: Request, res: Response) => {
   }
 };
 
-export default { signUpUser };
+const login = async (req: Request, res: Response) => {
+  try {
+    const { email, password } = req.body;
+    const user = await userServices.loginUser(email, password);
+    res.status(200).json({
+      success: true,
+      data: user,
+      message: "Login successful",
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+
+export default { signUpUser, login };
