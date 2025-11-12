@@ -7,6 +7,8 @@ import { RentRoutes } from '../modules/rent/rent.route';
 import { ReviewRoutes } from '../modules/review/review.route';
 import { SubscriptionRoutes } from '../modules/subscription/subscription.route';
 import { UserRoutes } from '../modules/user/user.route';
+import { ConversationRoutes } from '../modules/conversation/conversation.routes';
+import { MessageRoutes } from '../modules/message/message.routes';
 
 const router = Router();
 
@@ -14,6 +16,14 @@ const moduleRoutes = [
   {
     path: '/users',
     route: UserRoutes,
+  },
+  {
+    path: '/conversations',
+    route: ConversationRoutes,
+  },
+  {
+    path: '/messages',
+    route: MessageRoutes,
   },
   {
     path: '/bikes',
