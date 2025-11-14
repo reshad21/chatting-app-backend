@@ -5,13 +5,15 @@ import httpStatus from 'http-status';
 import { MessageService } from './message.service';
 
 export const send = catchAsync(async (req, res) => {
-  const senderId = req.user?.id;
-  const { receiverId, message } = req.body;
+  const senderId = req.user?.userId as string;
+  // console.log("see sender id==>",req.user);
+  const { receiverId, message, replyTo } = req.body;
 
   const result = await MessageService.sendMessage(
     senderId,
     receiverId,
     message,
+    replyTo || null
   );
   sendResponse(res, {
     statusCode: httpStatus.CREATED,

@@ -111,7 +111,6 @@ const getSingleUserFromDB = async (id: string) => {
 }
 
 export const UserServices = {
-  // createUserIntoDB,
   getProfilefromDB,
   updateProfilefromDB,
   getAllUsersfromDB,

@@ -20,7 +20,7 @@ const createConversation = catchAsync(async (req, res) => {
 
 
 const getMyConversations = catchAsync(async (req, res) => {
-  const userId = req.user?.id;
+  const userId = req.user?.userId as string;
   const result = await ConversationService.getConversations(userId);
   sendResponse(res, {
     statusCode: httpStatus.OK,
